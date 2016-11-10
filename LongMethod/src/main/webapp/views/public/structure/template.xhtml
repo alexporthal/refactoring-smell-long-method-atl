@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="description"
+                  content="Refactoring Smell Long Method - UFSCar" />
+            <meta name="author" content="Alex Malmann Becker" />
+        </f:facet>
+
+        <title>Refactoring Smell Long Method - TMS UFSCar</title>
+
+        <!-- core CSS -->
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" library="assets" />
+        <h:outputStylesheet name="css/datatable.css" library="assets" />
+        <h:outputStylesheet name="css/font-awesome.min.css" library="assets" />
+
+        <f:facet name="last">
+            <h:outputStylesheet name="css/main.css" library="assets" />
+        </f:facet>
+
+        <ui:insert name="head" />
+    </h:head>
+
+    <h:body id="home" class="homepage">
+
+        <p:dialog style="background: none!important; margin-top: 3%!important;" height="1000" width="100%"
+                  widgetVar="statusDialog" modal="true" draggable="false" closable="false" 
+                  resizable="false" showHeader="false">
+            <center>
+                <p:graphicImage url="#{resource['assets/image/status.gif']}"  />
+            </center>
+        </p:dialog>
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+        <ui:include src="topbar.xhtml" />
+
+        <ui:insert name="content">
+            Template
+        </ui:insert>
+
+        <ui:insert name="footer">
+            <ui:include src="footer.xhtml" />
+        </ui:insert>
+
+        <h:outputScript name="js/jquery.js" library="assets" />
+        <h:outputScript name="bootstrap/js/bootstrap.min.js" library="assets" />
+        <h:outputScript name="js/main.js" library="assets" />
+
+    </h:body>
+
+</html>

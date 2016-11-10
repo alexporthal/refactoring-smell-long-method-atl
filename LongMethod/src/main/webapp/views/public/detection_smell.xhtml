@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <div class="tab-pane" role="tabpanel" id="step2">
+        <h3>Detection Smell</h3>
+        <br/>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p:panel>
+                    <center>
+                        <strong>Method With Smell</strong>
+                    </center>
+                    <hr/>
+                    <p:dataTable id="idTabela" widgetVar="tblRegistro" var="methodSmell" value="#{refactoringLongMethodMBean.methodsWithSmell}" 
+                                 selectionMode="single" rowKey="methodSmell[0]" styleClass="styledatatable" rows="20" paginator="true"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="10,25,50,100,500" emptyMessage="No records found." rowIndexVar="rowId"
+                                 currentPageReportTemplate="(Pag. {currentPage}/{totalPages} - {totalRecords} records)" >
+                        <p:column headerText="#" style="width: 50px;">
+                            <h:outputText value="#{rowId + 1}" />
+                        </p:column>
+                        <p:column headerText="Name Method">
+                            <h:outputText value="#{methodSmell}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </div>
+
+            <div class="col-sm-6">
+                <p:panel>
+                    <center>
+                        <strong>Content of the selected method</strong>
+                    </center>
+                    <hr/>
+                </p:panel>
+            </div>
+        </div>
+        <br/>
+        <br/>
+
+        <ul class="list-inline pull-right">
+            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+            <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+        </ul>
+    </div>
+
+</html>

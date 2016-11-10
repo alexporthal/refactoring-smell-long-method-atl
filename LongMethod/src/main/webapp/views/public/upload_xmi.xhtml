@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <div class="tab-pane active" role="tabpanel" id="step1">
+        <h3>Upload XMI</h3>
+        <br/>
+
+        <h:form prependId="false" id="form_upload" enctype="multipart/form-data"> 
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <h:outputLabel value="Number Lines Smell" for="numberLines" />
+                        <h:inputText id="numberLines" value="#{refactoringLongMethodMBean.numberLines}" title="Number Lines Smell"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <h:outputLabel value="Number Lines Smell" for="upload_xmi" />
+                <h:inputFile value="#{refactoringLongMethodMBean.file1}" required="true" id="upload_xmi"></h:inputFile>
+            </div>
+        </h:form>
+        <br/>
+        <br/>
+
+        <ul class="list-inline pull-right">
+            <li><h:commandButton class="btn btn-primary next-step" value="Next" >
+                    <f:ajax  execute="@all" render=":idTabela" />
+                </h:commandButton>
+            </li>
+        </ul>
+    </div>
+
+</html>

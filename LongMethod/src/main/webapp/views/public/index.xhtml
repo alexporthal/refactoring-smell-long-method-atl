@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/views/public/structure/template.xhtml">
+
+    <ui:define name="content">
+
+        <div class="container">
+            <br /> <br />
+            <div class="row">
+                <section>
+                    <div class="wizard">
+                        <div class="wizard-inner">
+                            <div class="connecting-line"></div>
+                            <ul class="nav nav-tabs" role="tablist">
+
+                                <li role="presentation" class="active"><a href="#step1"
+                                                                          data-toggle="tab" aria-controls="step1" role="tab"
+                                                                          title="Upload XMI"> <span class="round-tab"> <i
+                                                class="fa fa-cloud-upload"></i>
+                                        </span>
+                                    </a></li>
+
+                                <li role="presentation" class="disabled"><a href="#step2"
+                                                                            data-toggle="tab" aria-controls="step2" role="tab"
+                                                                            title="Detection Smell"> <span class="round-tab"> <i
+                                                class="fa fa-search"></i>
+                                        </span>
+                                    </a></li>
+                                <li role="presentation" class="disabled"><a href="#step3"
+                                                                            data-toggle="tab" aria-controls="step3" role="tab"
+                                                                            title="Refactoring Smell"> <span class="round-tab">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </span>
+                                    </a></li>
+
+                                <li role="presentation" class="disabled"><a
+                                        href="#complete" data-toggle="tab" aria-controls="complete"
+                                        role="tab" title="Process Completed"> <span
+                                            class="round-tab"> <i class="fa fa-check-square-o"></i>
+                                        </span>
+                                    </a></li>
+                            </ul>
+                        </div>
+
+
+                        <h:form prependId="false" id="form_index" enctype="multipart/form-data">
+                            <div class="tab-content">
+
+                                <ui:include src="upload_xmi.xhtml" />
+
+                                <ui:include src="detection_smell.xhtml" />
+
+                                <ui:include src="refactoring_smell.xhtml" />
+
+                                <ui:include src="process_completed.xhtml" />
+
+                            </div>
+                        </h:form>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>
