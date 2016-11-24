@@ -1,0 +1,39 @@
+-- @nsURI MM=http://www.eclipse.org/MoDisco/kdm/code
+-- @nsURI MM=http://www.eclipse.org/MoDisco/kdm/action
+
+module move_rows_method;
+create OUT: MM refining IN: MM;
+
+rule moveRowsMethod {
+	from
+		source: MM!MethodUnit (
+			source.name = 'newMethod'
+		)
+	to
+		target: MM!MethodUnit (
+			codeElement <- blockUnit
+		),
+		blockUnit: MM!BlockUnit (
+			codeElement <- thisModule.getRows(
+				thisModule.getBlockUnitMethod(
+					thisModule.getMethodUnit(
+						thisModule.getClassUnit('ControllerPessoa')
+					, 'longMethodDoModel')
+				)
+			, 1, 10)
+		)
+}
+
+helper def: getClassUnit(className: String): MM!ClassUnit =
+	MM!ClassUnit.allInstances() -> any(e | e.name = className);
+
+helper def: getMethodUnit(classUnitToGetMethod: MM!ClassUnit, nameMethod: String):
+		MM!MethodUnit =
+			classUnitToGetMethod.codeElement -> any(e | e.name.equalsIgnoreCase(nameMethod));
+
+helper def: getBlockUnitMethod(methodFrom: MM!MethodUnit):
+		MM!BlockUnit = 
+			methodFrom.codeElement->any(e | e.oclIsTypeOf(MM!BlockUnit));
+			
+helper def: getRows(blockUnit: MM!BlockUnit, startLine: Integer, endLine: Integer) : MM!ActionElement =
+	blockUnit.codeElement.subSequence(startLine, endLine);

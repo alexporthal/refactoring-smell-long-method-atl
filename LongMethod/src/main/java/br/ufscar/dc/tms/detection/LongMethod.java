@@ -99,5 +99,9 @@ public class LongMethod {
     public ArrayList<String> getMethodsWithSmell() {
         return methodsWithSmell;
     }
+    
+    public void verifyContentMethod(String nameMethod){
+        
+    }
 
 }

@@ -1,0 +1,22 @@
+-- @nsURI MM=http://www.eclipse.org/MoDisco/kdm/code
+
+module create_new_method;
+create OUT : MM refining IN : MM;
+
+rule createNewMethod{
+	from
+		source : MM!ClassUnit (source.name = 'Pessoa')
+	to
+		target: MM!ClassUnit (			
+			codeElement <- source.codeElement->including(newMethod)
+		),
+		newMethod: MM!MethodUnit (
+			name <- 'newMethod',
+			export <- 'public',
+			kind <- 'method',
+			codeElement <- newSignature			
+		),
+		newSignature: MM!Signature (
+			name <- 'newMethod'
+		)
+}
